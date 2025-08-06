@@ -1,47 +1,47 @@
-
 #include <stdio.h>
-#define MAX_SIZE 256
+#include <stdlib.h>
+#include <cstdlib>
+
+int stack[256];
+int count=0;
+
+void push(int x){
+
+    if(count==256){
+        fprintf(stderr,"There is no space in the stack");
+        return;
+    }
+
+    stack[count]=x;
+    count++;
+}
 
 
-int stack[MAX_SIZE];
-int top=-1;
+int pop(){
 
-void push(int val){
+    if(count==0){
+        fprintf(stderr,"empty stack !!");
+        exit(1);
+    }
     
-    if(top==MAX_SIZE-1){
-        printf("Stack Underflow");
-        return;
-    }
-
-    top=top+1;
-    stack[top]=val;
+    int res=stack[count-1];
+    count--;
+    return res;
 }
 
-void pop(){
-    if(top==-1){
-        printf("Stack Underflow");
-        return;
-    }
-
-    printf("Popped %d \n",stack[top]);
-    top=top-1;
+int peek(){
+    return stack[count];
 }
 
-void peek(){
-    if(top==-1){
-        printf("Stack is Empty!! ");
-        return;
-    }
-
-    printf(" %d ",stack[top]);
-}
 
 int main(){
     push(1);
     push(2);
     push(3);
-    push(4);
-    push(5);
-    pop();
-    peek();
+
+    int i;
+
+    for(i=0;i<3;i++){
+        printf("%d ",pop());
+    }
 }
