@@ -103,17 +103,32 @@ void delete_tail(){
     temp->next=NULL;
 }
 
+// void reverse(){  //Using Stack
+//     Node* temp = head;
+//     while(temp!=NULL){
+//         push(temp->data);
+//         temp=temp->next;
+//     }
+//     temp = head;
+//     while(temp!=NULL){
+//         temp->data=pop();
+//         temp=temp->next;
+//     }
+// } 
+
 void reverse(){
-    Node* temp = head;
-    while(temp!=NULL){
-        push(temp->data);
-        temp=temp->next;
+    Node* prev=NULL;
+    Node* curr=head;
+    Node* next=NULL;
+
+    while(curr!=NULL){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
     }
-    temp = head;
-    while(temp!=NULL){
-        temp->data=pop();
-        temp=temp->next;
-    }
+
+    head=prev;
 }
 
 void count_nodes(){
