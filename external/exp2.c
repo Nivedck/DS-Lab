@@ -74,14 +74,13 @@ int add_poly(Polynomial poly1[] , int n1 ,Polynomial poly2[],int n2 , Polynomial
         }
     }
 
-        while( i <n1){
-            result[k++]=poly1[i++];
-        }
+    while( i <n1){
+        result[k++]=poly1[i++];
+    }
 
-        while( j<n2){
-            result[k++]=poly2[j++];
-        }
-
+    while( j<n2){
+        result[k++]=poly2[j++];
+    }
 
     return k;
 }
@@ -99,8 +98,8 @@ int main(){
     scanf("%d" ,&n2);
     read_poly(n1,poly2);
 
-    int res= add_poly(poly1,n2,poly2,n2,result);
+    int res_size= add_poly(poly1,n2,poly2,n2,result);
 
-    print_poly(res,result);
+    print_poly(res_size,result);
 
 }
